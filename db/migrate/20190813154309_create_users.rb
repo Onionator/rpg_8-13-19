@@ -3,9 +3,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :name
       t.string :password
-      t.integer :hit_points, null: false, default: 100
-      t.integer :attack, null: false, default: 5
-      t.integer :defense, null: false, default: 3
+      t.integer :hit_points,  default: 100
+      t.integer :attack, default: 5
+      t.integer :defense, default: 3
 
       t.timestamps
     end

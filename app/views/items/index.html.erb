@@ -1,0 +1,14 @@
+<h1>All Items</h1>
+
+<% if @items.any? %>
+  <ul>
+    <% @items.each do |item| %>
+      <li><%= link_to item.name, user_item_path(current_user.id, item.id), method: :patch %></li>
+      <p><%= item.id %></p>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There aren't any items for you [insert micro-aggression here].</p>
+<% end %>
+
+<%= link_to "Home", root_path %>
