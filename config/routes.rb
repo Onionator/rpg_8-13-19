@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
+  root to: 'homes#index'
+  resources :homes
+  devise_for :users
   resources :item_users
   resources :items
   resources :monsters

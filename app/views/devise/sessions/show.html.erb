@@ -1,0 +1,26 @@
+<h1>Welcome To Rocket Propelled Grenade The Game</h1>
+
+<h2>User: <%= @user.name %></h2>
+
+<h3>Your Equipped Items</h3>
+<% if @equipped_items.any? %>
+  <ul>
+    <% @equipped_items.each do |item| %>
+      <li><%= item.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Macro-Aggression: You're poor and worthless because you own nothing. Now go die in the street you homeless piece of trash.</p>
+<% end %>
+
+<% if @items.any? %>
+  <ul>
+    <% @items.each do |item| %>
+      <li><%= item.name %></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>There aren't any items for you [insert micro-aggression here].</p>
+<% end %>
+
+<%= link_to "Home", root_path %>
