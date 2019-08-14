@@ -14,4 +14,24 @@ class User < ApplicationRecord
     item = ItemUsers.where(user_id: @user.id, item_id: @item.id)
     item.equipped = true
   end
+
+  def attack
+    @user = User.find(params[:id])
+    max_attack = @user.attack
+    equipped_items = ItemUsers.where(user_id: @user.id, equipped: true)
+    equipped_items.each do |item|
+      max_attack += item.attack
+    end
+    rand(@user.attack...max_attack)
+  end
+
+  def defense
+    @user = User.find(params[:id])
+    max_defense = @user.defense
+    equipped_items = ItemUsers.where(user_id: @user.id).where(equipped: true)
+    equipped_items.each do |item|
+      max_defense += item.defense
+    end
+    max_defense
+  end
 end
