@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @equipped_items = ItemUsers.where(user_id: @user.id, equipped: true)
     @items = ItemUsers.where(user_id: @user.id)
-    render :show
     render :index
   end
 
@@ -15,17 +14,22 @@ class UsersController < ApplicationController
     render :new
   end
 
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to user_session_path
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @user = User.new(user_params)
+  #   @user.attack = 9
+  #   byebug
+  #   if @user.save
+  #     redirect_to user_session_path
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def show
-    redirect_to root_path
+    @user = User.find(current_user.id)
+    @equipped_items = ItemUsers.where(user_id: @user.id, equipped: true)
+    @items = ItemUsers.where(user_id: @user.id)
+    render :show
   end
 
   def destroy
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :encrypted_password)
+    params.require(:user).permit(:name, :email, :encrypted_password, :attack, :hit_points, :defense)
   end
 
 end

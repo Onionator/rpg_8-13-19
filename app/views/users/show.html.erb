@@ -1,6 +1,9 @@
 <h1>Welcome To Rocket Propelled Grenade The Game</h1>
 
 <h2>User: <%= @user.name %></h2>
+<h2>Health: <%= @user.hit_points %></h2>
+<h2>Attack: <%= @user.attack %></h2>
+<h2>Defense: <%= @user.defense %></h2>
 
 <h3>Your Equipped Items</h3>
 <% if @equipped_items.any? %>
@@ -22,5 +25,7 @@
   <% else %>
     <p>There aren't any items for you [insert micro-aggression here].</p>
 <% end %>
+
+
 
 <%= link_to "Home", root_path %>
